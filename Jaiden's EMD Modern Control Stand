@@ -1,0 +1,106 @@
+@name Jaidens EMD Modern Control Stand
+@inputs RLCPT:entity Horn
+@outputs BellOut
+@persist A AirBrakeType
+
+@model models/magtrainslocos/cstands_bg/emd_modern_bg.mdl
+E=entity()
+
+if(first() | dupefinished()){
+
+
+AirBrakeType = 0
+
+
+
+
+A++
+
+holoCreate(A)
+holoModel(A,"models/parts/radio_msa.mdl")
+holoAng(A, entity():toWorld(ang(0,-165,0)))
+holoScale(A, vec(1,1,1))
+holoMaterial(A,"")
+holoColor(A, vec(255))
+holoParent(A,entity())
+holoPos(A,entity():toWorld(vec(10,3,45.65)))
+
+A++
+holoCreate(A)
+holoModel(A,"models/parts/phone.mdl")
+holoPos(A,entity():toWorld(vec(0,1,36.45)))
+holoAng(A, entity():toWorld(ang(0,90,-90)))
+holoScale(A, vec(1.25))
+holoMaterial(A,"")
+holoColor(A, vec(255))
+holoParent(A,entity())
+
+}
+
+PTWL = RLCPT:wirelink()
+
+local BrakeInfo = PTWL["BrakeInfo",array]
+local AirBrake = BrakeInfo[2,number]
+local LocoBrake = PTWL["LocoBrakePressure",number]
+local Dynamics = PTWL["Dynamics",number]
+local DynaNotch = PTWL["DynaNotch",number]
+local Reverser = PTWL["Reverser",number]
+local Throttle = PTWL["Notch",number]
+local Load = PTWL["Load",number]
+local LocoBrakePressure = BrakeInfo[4,number]
+local TrainBrakePressure = BrakeInfo[2,number]
+local Emergency = PTWL["Emergency",number]
+
+    if(!AirBrakeType){
+        TB_Notch = PTWL["AB16M_Notch",number]
+        LB_Notch = PTWL["LB16M_Notch",number]
+    }
+
+E:setBodygroup(6,Horn)
+
+interval(100)
+
+if(AirBrakeType){
+        #26L
+        E:setBodygroup(4,(Emergency & (TrainBrakePressure==0)) ? 6 : 1+(TrainBrakePressure<22.5)+(TrainBrakePressure<45)+(TrainBrakePressure<67.5)+(TrainBrakePressure==0))
+        E:setBodygroup(5,1+(LocoBrakePressure>22.5)+(LocoBrakePressure>45)+(LocoBrakePressure>67.5)+(LocoBrakePressure==90))
+    }else{
+        #16M
+        switch(TB_Notch){
+            case -1,
+                TB_BrakePos = 1
+                break
+            case 0,
+                TB_BrakePos = 3
+                break
+            case 1,
+                TB_BrakePos = 5
+                break
+            case 2,
+                TB_BrakePos = 6
+                break
+            default,
+                break
+        }
+        E:setBodygroup(4,TB_BrakePos)
+        E:setBodygroup(5,3 + (LB_Notch*2))
+}
+
+if(Reverser == -1){
+E:setBodygroup(1,1)   
+}elseif(Reverser == 0){
+E:setBodygroup(1,2)   
+}elseif(Reverser == 1){
+E:setBodygroup(1,3)   
+}elseif(Reverser == 2){
+E:setBodygroup(1,0)   
+}
+
+
+if(Dynamics){
+E:setBodygroup(3,DynaNotch+1)
+E:setBodygroup(2,0)
+}elseif(!Dynamics){
+E:setBodygroup(3,0)
+E:setBodygroup(2,Throttle)
+}
