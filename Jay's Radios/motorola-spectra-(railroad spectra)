@@ -10,6 +10,8 @@ if(first()|dupefinished()){
 #     Configurations     #
 ##########################
 
+# How to video https://youtu.be/JSSdZN2s-5E
+
 #Preferences
 #What you want your starting volume to be
 Volume=0.5
