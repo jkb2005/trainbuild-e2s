@@ -1,0 +1,221 @@
+@name Jay's Motorola Clean Cab Spectra (Railroad Spectra)
+@inputs POD:entity
+@outputs RadioVolume Play Channel RadioStream:string
+@persist A Channel Volume Mute [BodyMaterial ButtonSetOneMaterial ButtonSetTwoMaterial]:string [BodyColor ButtonSetOneColor ButtonSetTwoColor]:vector URList:array URNames:array X
+@persist [MuteKey VolumeUpKey VolumeDownKey ChannelUpKey ChannelDownKey]:string
+@model models/parts/radio_msa.mdl
+if(first()|dupefinished()){
+
+##########################
+#     Configurations     #
+##########################
+
+#Preferences
+#What you want your starting volume to be
+Volume=0.5
+#What you want your starting channel to be
+Channel=1
+
+#Looks/Details
+#I recommend elfnet's video on the motorola railroad spectra, it shows the in depth about them. It also explain about the two different button sets. 
+BodyMaterial=""
+ButtonSetOneMaterial="bobsters_trains/br_yellow"
+ButtonSetTwoMaterial=""
+
+BodyColor=vec(255)
+ButtonSetOneColor=vec(255)
+ButtonSetTwoColor=vec(255)
+
+ScreenBackgroundMaterial="" # I don't recommend changing this!
+
+#Key Configurations
+
+#=============================================================================================#
+# V A L I D   K E Y S   T O   U S E                                                           #
+#=============================================================================================#
+# BASIC KEYS                                                                                  #
+#---------------------------------------------------------------------------------------------#
+# 0 1 2 3 4 5 6 7 8 9 	
+# A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+#=============================================================================================#
+# NUMPAD KEYS
+#---------------------------------------------------------------------------------------------#
+# PAD_0 PAD_1 PAD_2 PAD_3 PAD_4 PAD_5 PAD_6 PAD_7 PAD_8 PAD_9
+# PAD_DIVIDE PAD_MULTIPLY PAD_MINUS PAD_PLUS PAD_ENTER PAD_DECIMAL
+#=============================================================================================#
+# SPEICAL KEYS
+#---------------------------------------------------------------------------------------------#
+# LBRACKET RBRACKET SEMICOLON APOSTROPHE BACKQUOTE COMMA PERIOD	SLASH	BACKSLASH 
+# MINUS EQUAL ENTER SPACE	BACKSPACE TAB CAPSLOCK NUMLOCK ESCAPE SCROLLLOCK INSERT	DELETE 
+# HOME	END PAGEUPPAGEDOWN BREAK LSHIFT LALT LCONTROL LWIN RWIN	APP UP LEFT DOWN RIGHT
+# F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 	
+#=============================================================================================#   
+
+MuteKey="PAD_8"
+VolumeUpKey="PAD_PLUS"
+VolumeDownKey="PAD_MINUS"
+ChannelUpKey="PAD_9"
+ChannelDownKey="PAD_7"
+
+# Radio URL's!
+URList=array(
+"", # 1
+"", # 2
+"", # 3
+"", # 4
+"", # 5
+"", # 6
+"", # 7
+"", # 8
+"", # 9
+""  # 10
+)
+    
+    
+#Channel Names
+URNames=array(
+"One", # 1
+"Two", # 2
+"Three", # 3
+"Four", # 4
+"Five", # 5
+"Six", # 6
+"Seven", # 7
+"Eight", # 8
+"Nine", # 9
+"Ten"  # 10
+)
+    
+    
+    
+    
+#holo stuff!    
+    A=0
+    holoCreate(A)
+    holoModel(A,"models/sprops/misc/alphanum/alphanum_0.mdl")
+    holoParent(A,entity())
+    holoColor(A,vec(255))
+    holoScale(A,vec(0.05))
+    holoBodygroup(A,0,3)
+    holoPos(A,entity():toWorld(vec(1,-0.9,0.4)))
+    holoMaterial(A,"bobsters_trains/br_garter_blue")
+    holoAng(A,entity():toWorld(ang(0,180,0)))
+    A=1
+    holoCreate(A)
+    holoModel(A,"models/sprops/misc/alphanum/alphanum_0.mdl")
+    holoParent(A,entity())
+    holoColor(A,vec(255))
+    holoScale(A,vec(0.05))
+    holoBodygroup(A,0,3)
+    holoPos(A,entity():toWorld(vec(1.5,-0.9,0.4)))
+    holoMaterial(A,"bobsters_trains/br_garter_blue")
+    holoAng(A,entity():toWorld(ang(0,180,0)))
+    A=2
+    holoCreate(A)
+    holoModel(A,"models/sprops/misc/alphanum/alphanum_0.mdl")
+    holoParent(A,entity())
+    holoColor(A,vec(255))
+    holoScale(A,vec(0.05))
+    holoBodygroup(A,0,3)
+    holoPos(A,entity():toWorld(vec(2.4,-0.9,0.4)))
+    holoMaterial(A,"bobsters_trains/br_garter_blue")
+    holoAng(A,entity():toWorld(ang(0,180,0)))
+    A=3
+    holoCreate(A)
+    holoModel(A,"models/sprops/misc/alphanum/alphanum_0.mdl")
+    holoParent(A,entity())
+    holoColor(A,vec(255))
+    holoScale(A,vec(0.05))
+    holoBodygroup(A,0,3)
+    holoPos(A,entity():toWorld(vec(2.85,-0.9,0.4)))
+    holoMaterial(A,"bobsters_trains/br_garter_blue")
+    holoAng(A,entity():toWorld(ang(0,180,0)))
+    
+    A=4
+    holoCreate(A)
+    holoModel(A,"models/sprops/misc/alphanum/alphanum_t.mdl")
+    holoParent(A,entity())
+    holoColor(A,vec(255))
+    holoScale(A,vec(0.05))
+    holoBodygroup(A,0,3)
+    holoPos(A,entity():toWorld(vec(1,-0.9,1.1)))
+    holoMaterial(A,"bobsters_trains/base")
+    A=5
+    holoCreate(A)
+    holoModel(A,"models/sprops/misc/alphanum/alphanum_x.mdl")
+    holoParent(A,entity())
+    holoColor(A,vec(255))
+    holoScale(A,vec(0.05))
+    holoBodygroup(A,0,3)
+    holoPos(A,entity():toWorld(vec(1.5,-0.9,1.1)))
+    holoMaterial(A,"bobsters_trains/base")
+    A=6
+    holoCreate(A)
+    holoModel(A,"models/sprops/misc/alphanum/alphanum_r.mdl")
+    holoParent(A,entity())
+    holoColor(A,vec(255))
+    holoScale(A,vec(0.05))
+    holoBodygroup(A,0,3)
+    holoPos(A,entity():toWorld(vec(2.4,-0.9,1.1)))
+    holoAng(A,entity():toWorld(ang(0,180,0)))
+    holoMaterial(A,"bobsters_trains/base")
+    A=7
+    holoCreate(A)
+    holoModel(A,"models/sprops/misc/alphanum/alphanum_x.mdl")
+    holoParent(A,entity())
+    holoColor(A,vec(255))
+    holoScale(A,vec(0.05))
+    holoBodygroup(A,0,3)
+    holoPos(A,entity():toWorld(vec(2.85,-0.9,1.1)))
+    holoMaterial(A,"bobsters_trains/base")
+    
+entity():setSubMaterial(2,ButtonSetOneMaterial)
+entity():setSubMaterial(3,ButtonSetTwoMaterial)
+entity():setSubMaterial(4,ButtonSetTwoMaterial)
+}
+
+if(changed(Volume)|changed(Mute)){
+ if(!Mute){
+ RadioVolume=Volume
+ print("Motorola Spectra | Volume: "+Volume)  
+  }elseif(Mute){
+ print("Motorola Spectra | Radio Muted!")
+ RadioVolume=0
+ }
+}
+
+if(changed(Channel)){
+print("Motorola Spectra | Channel Set To: "+URNames[Channel,string])
+B=toString(Channel)
+C=B:explode("")
+holoModel(0,"models/sprops/misc/alphanum/alphanum_"+C[1,string]+".mdl")
+holoModel(2,"models/sprops/misc/alphanum/alphanum_"+C[1,string]+".mdl")
+
+holoModel(1,"models/sprops/misc/alphanum/alphanum_"+C[2,string]+".mdl")
+holoModel(3,"models/sprops/misc/alphanum/alphanum_"+C[2,string]+".mdl")
+
+RadioStream=URList[Channel,string]
+Play=0
+}
+
+
+interval(100)
+Play=1
+
+Seat = POD:driver()
+
+if(Seat:keyPressed(VolumeUpKey)&Volume<1){
+ Volume=Volume+0.1  
+}elseif(Seat:keyPressed(VolumeDownKey)&Volume>0){
+ Volume=Volume-0.1
+}
+
+if(Seat:keyPressed(ChannelUpKey)&Channel<10){
+ Channel++  
+}elseif(Seat:keyPressed(ChannelDownKey)&Channel>1){
+ Channel--
+}
+
+if(Seat:keyPressed(MuteKey)){
+ Mute=!Mute
+}
