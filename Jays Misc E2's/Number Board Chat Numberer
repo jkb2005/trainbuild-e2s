@@ -1,0 +1,49 @@
+@name Number Board Numberer
+@inputs POD:entity
+@outputs Number:string Railroad:string
+@persist SpawnRandom ChangeNumKey:string A
+
+
+if(first()|dupefinished()){
+#################
+# Configuraions #
+#################
+
+#The starting number, so what it first starts with when spawned down.
+Number="0000"
+#Set this to one if you want it to have a random number when spawned.
+SpawnRandom=1
+
+#Your railroads name
+Railroad="UCRR"
+
+#What key you want to activate the number change.
+ChangeNumKey="p"
+
+#extra code
+if(SpawnRandom){
+Number=toString(round(randint(10000)))
+}
+}
+
+
+Seat = POD:driver()
+
+interval(100)
+
+if(Seat:keyPressed(ChangeNumKey)){
+ A=1
+ print("Type in chat what you want your new number to be!")   
+}
+
+
+
+runOnChat(1)
+if(chatClk(owner())){
+T=owner():lastSaid():explode(" ")
+if(A){
+Number=T[1,string]
+print("Numplates set to: "+Number)
+A=0
+}
+}
