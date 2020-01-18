@@ -29,5 +29,5 @@ A=5
 timer("A",1000)
 if(clk("A")){
  B=!B
- holoColor(4,vec(100*B+35,0,0))  
+ holoColor(5,vec(100*B+35,0,0))  
 }
