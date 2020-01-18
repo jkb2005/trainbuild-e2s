@@ -1,0 +1,33 @@
+@name Jaiden's Cab Dashcam
+@persist B
+@model models/sprops/cylinders/size_1/cylinder_1_5x12.mdl 
+E=entity()
+E:setMaterial("models/proppertextures/enamel_black")
+E:setColor(vec(50))
+if(first()|dupefinished()){
+A=1
+ holoCreate(A,E:toWorld(vec(0,0,-6)),vec(0.75),E:toWorld(ang(0,0,0)),vec(255),"models/sprops/cuboids/height06/size_1/cube_6x12x6.mdl")
+ holoParent(A,E)
+ holoMaterial(A,"models/proppertextures/cabmetal_terracotta")
+A=2
+ holoCreate(A,E:toWorld(vec(0,0,-4.5)),vec(0.75),E:toWorld(ang(0,0,0)),vec(255),"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+ holoParent(A,E)
+ holoMaterial(A,"bobsters_trains/br_intercity_grey")
+A=3
+ holoCreate(A,E:toWorld(vec(4,0,-6)),vec(0.75),E:toWorld(ang(90,0,0)),vec(255),"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+ holoParent(A,E)
+ holoMaterial(A,"models/proppertextures/enamel_black")
+A=4
+ holoCreate(A,E:toWorld(vec(4.3,0,-6)),vec(0.6),E:toWorld(ang(90,0,0)),vec(255),"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+ holoParent(A,E)
+ holoMaterial(A,"models/debug/debugwhite")
+A=4
+ holoCreate(A,E:toWorld(vec(-4.5,-1,-5)),vec(0.1),E:toWorld(ang(90,0,0)),vec(35,0,0),"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
+ holoParent(A,E)
+ holoMaterial(A,"bobsters_trains/base")
+}
+timer("A",1000)
+if(clk("A")){
+ B=!B
+ holoColor(4,vec(100*B+35,0,0))  
+}
