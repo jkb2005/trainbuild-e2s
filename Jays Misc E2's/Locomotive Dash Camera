@@ -21,7 +21,7 @@ A=4
  holoCreate(A,E:toWorld(vec(4.3,0,-6)),vec(0.6),E:toWorld(ang(90,0,0)),vec(255),"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
  holoParent(A,E)
  holoMaterial(A,"models/debug/debugwhite")
-A=4
+A=5
  holoCreate(A,E:toWorld(vec(-4.5,-1,-5)),vec(0.1),E:toWorld(ang(90,0,0)),vec(35,0,0),"models/sprops/cylinders/size_2/cylinder_3x3.mdl")
  holoParent(A,E)
  holoMaterial(A,"bobsters_trains/base")
