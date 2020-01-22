@@ -1,0 +1,57 @@
+@name Jaiden's Particle Controller System R.1
+@inputs On Load SteamGen SteamGenParticleSystem:entity  ExhaustEntity:entity
+@outputs SteamGenPart SteamGenString:string SteamGenSpeed ExhaustString:string ExhaustPart ExhaustSpeed
+@persist ExhaustArray:array
+@trigger 
+
+#Configurations for the clag/smoke!
+
+#Steam Generator Settings
+SteamGenString="steam_gen"
+SteamGenSpeed=1
+
+#Diesel Exhaust Settings
+
+ExhaustArray=array(
+"clag_4stroke_0",
+"clag_4stroke_1",
+"clag_4stroke_2",
+"clag_4stroke_3",
+"clag_4stroke_4",
+"clag_4stroke_5",
+"clag_4stroke_6"
+)
+# Actual Code!
+SteamGenParticleSystem:setAlpha(0)
+ExhaustEntity:setAlpha(0)
+
+if(SteamGen){
+SteamGenPart=1
+}else{
+SteamGenPart=0
+}
+
+if(On){
+ExhaustPart=1
+ if(Load<18){
+   ExhaustString=ExhaustArray[1,string]
+   ExhaustSpeed=1
+ }elseif(Load>18&Load<36){
+   ExhaustSpeed=124/Load
+   ExhaustString=ExhaustArray[2,string]
+ }elseif(Load>36&Load<54){
+   ExhaustSpeed=124/Load
+   ExhaustString=ExhaustArray[3,string]
+ }elseif(Load>54&Load<72){
+   ExhaustSpeed=124/Load
+   ExhaustString=ExhaustArray[4,string]
+ }elseif(Load>72&Load<90){
+   ExhaustSpeed=124/Load
+   ExhaustString=ExhaustArray[5,string]
+ }elseif(Load>90){
+   ExhaustSpeed=124/Load
+   ExhaustString=ExhaustArray[6,string]
+ }
+}else{
+ExhaustPart=0
+}
