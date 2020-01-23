@@ -1,0 +1,34 @@
+@name Primer Switch (RLC RUBY)
+@inputs PrimerState Button:entity
+
+#@model models/magtrainslocos/rotaryswitches/headlight_alco.mdl
+@model models/magtrainslocos/rotaryswitches/headlight_emd.mdl   
+#@model models/magtrainslocos/rotaryswitches/headlight_ge.mdl
+
+Button:setAlpha(0)
+
+Switch = entity()
+Switch:setBodygroup(2,1)
+
+#Makes the start decal thingy
+
+A=1
+holoCreate(A)
+holoPos(A,entity():toWorld(vec(0,0,0)))
+holoParent(A, entity())
+holoModel(A, "plane")
+holoAng(A, entity():toWorld(ang(0,0,0)) )
+holoScale(A, vec(0.5))
+holoMaterial(A,"woozie/jazzlok1-1/eng_start_switch")
+
+
+
+# The actual usefull code.
+
+if(PrimerState == 1){
+Switch:setBodygroup(1,7)    
+}elseif(PrimerState == 2){
+Switch:setBodygroup(1,1)
+}else{
+Switch:setBodygroup(1,0)    
+}
