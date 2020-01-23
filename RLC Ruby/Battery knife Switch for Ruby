@@ -1,0 +1,15 @@
+@name Battery Knife Switch (RLC RUBY)
+@inputs Button ButtonEntity:entity
+@model models/woozie/jazzlok1-1/trains/cab/sd-gp28-35_battery_circuit_board.mdl
+
+ButtonEntity:setAlpha(0)
+
+BatteryPanel = entity()
+
+if(Button){
+ BatteryPanel:setBodygroup(1,1)
+ soundPlay(0,0,"_jazzlok/switches/knife_switch_close.wav")
+}else{
+ BatteryPanel:setBodygroup(1,0)
+ soundPlay(0,0,"_jazzlok/switches/knife_switch_open.wav")
+}
