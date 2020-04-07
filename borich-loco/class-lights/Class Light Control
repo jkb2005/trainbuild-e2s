@@ -1,0 +1,41 @@
+@name Borich Loco Class Light Control
+@inputs Cycle Button:entity
+@outputs RGB:vector
+@persist A
+@model models/magtrainslocos/rotaryswitches/headlight_emd.mdl
+entity():setBodygroup(2,1)
+Button:setAlpha(0)
+if(first()|dupefinished()){
+ holoCreate(0)
+ holoModel(0,"models/anytrains/props/detail/class_light_switch.mdl")
+ holoParent(0,entity())
+ holoPos(0,entity():toWorld(vec(0)))   
+ holoAng(0,entity():toWorld(ang(0)))  
+ holoBodygroup(0,2,4) 
+ holoEntity(0):setSubMaterial(6,"models/proppertextures/plastic_black")
+}
+
+if(Cycle){
+    soundPlay(A,1,"_jazzlok/switches/rotary_switch.wav")
+    A++
+    if(A>4){
+     A=0
+    }
+}
+
+if(A==0){
+ entity():setBodygroup(1,0)
+ RGB=vec(0)   
+}elseif(A==1){
+ entity():setBodygroup(1,1)
+ RGB=vec(255)   
+}elseif(A==2){
+ entity():setBodygroup(1,3)
+ RGB=vec(0,255,0)   
+}elseif(A==3){
+ entity():setBodygroup(1,5)
+ RGB=vec(255,0,0)   
+}elseif(A==4){
+ entity():setBodygroup(1,7)
+ RGB=vec(0,0,255)   
+}
