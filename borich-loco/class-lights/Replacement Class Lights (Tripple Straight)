@@ -1,0 +1,70 @@
+@name Borich Loco Replacement Class Lights (S/N:SD556)
+@inputs RGB:vector
+@outputs 
+@persist 
+@model models/gsgtrainprops/parts/auxlights/class_light_gmdd.mdl
+entity():setSubMaterial(1,"invisible") #this makes the back panel invisible
+
+if(first()|dupefinished()){
+A=0
+    holoCreate(A)
+    holoModel(A,"models/sprops/geometry/fdisc_24.mdl")
+    holoParent(A,entity())
+    holoPos(A,entity():toWorld(vec(2,-6,0)))
+    holoAng(A,entity():toWorld(ang(0,90,0)))
+    holoScale(A,vec(0.5,0.0000001,0.5))
+    holoAlpha(A,0)
+    holoMaterial(A,"jazzie/light_glow01") 
+    holoColor(A,vec(255,0,0))
+A=1
+    holoCreate(A)
+    holoModel(A,"models/sprops/geometry/fdisc_24.mdl")
+    holoParent(A,entity())
+    holoPos(A,entity():toWorld(vec(2,0,0)))
+    holoAng(A,entity():toWorld(ang(0,90,0)))
+    holoScale(A,vec(0.5,0.0000001,0.5))
+    holoAlpha(A,0)
+    holoMaterial(A,"jazzie/light_glow01") 
+    holoColor(A,vec(0,255,0))
+A=2
+    holoCreate(A)
+    holoModel(A,"models/sprops/geometry/fdisc_24.mdl")
+    holoParent(A,entity())
+    holoPos(A,entity():toWorld(vec(2,6,0)))
+    holoAng(A,entity():toWorld(ang(0,90,0)))
+    holoAlpha(A,0)
+    holoScale(A,vec(0.5,0.0000001,0.5))
+    holoMaterial(A,"jazzie/light_glow01") 
+    holoColor(A,vec(255))
+    
+}
+
+if(RGB==vec(255,0,0)){
+    holoAlpha(0,100)
+    holoAlpha(1,0)
+    holoAlpha(2,0)
+    entity():setSubMaterial(3,"models/props_gulch/gulch_crystal_scarlet")
+    entity():setSubMaterial(2,"models/gsgtrainprops/auxlights/lens_glass_green")
+    entity():setSubMaterial(4,"models/gsgtrainprops/auxlights/lens_glass")
+}elseif(RGB==vec(0,255,0)){
+    holoAlpha(0,0)
+    holoAlpha(1,100)
+    holoAlpha(2,0)
+    entity():setSubMaterial(3,"models/gsgtrainprops/auxlights/lens_glass_red")
+    entity():setSubMaterial(2,"models/props_gulch/gulch_crystal_green")
+    entity():setSubMaterial(4,"models/gsgtrainprops/auxlights/lens_glass")
+}elseif(RGB==vec(255)){
+    holoAlpha(0,0)
+    holoAlpha(1,0)
+    holoAlpha(2,100)
+    entity():setSubMaterial(3,"models/gsgtrainprops/auxlights/lens_glass_red")
+    entity():setSubMaterial(2,"models/gsgtrainprops/auxlights/lens_glass_green")
+    entity():setSubMaterial(4,"models/props_gulch/gulch_crystal_white")
+}else{
+    holoAlpha(0,0)
+    holoAlpha(1,0)
+    holoAlpha(2,0)
+    entity():setSubMaterial(3,"models/gsgtrainprops/auxlights/lens_glass_red")
+    entity():setSubMaterial(2,"models/gsgtrainprops/auxlights/lens_glass_green")
+    entity():setSubMaterial(4,"models/gsgtrainprops/auxlights/lens_glass")
+}
